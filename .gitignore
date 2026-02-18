@@ -1,0 +1,16 @@
+# PlatformIO build artifacts
+.pio/
+
+# Temporary build output
+build_output.txt
+
+# IDE settings
+.vscode/
+.idea/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# UF2 firmware binaries (large)
+*.UF2
