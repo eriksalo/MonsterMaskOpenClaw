@@ -179,8 +179,12 @@ void setup() {
   // config1.eye, config2.eye or config3.eye instead). Keep fingers clear
   // of the nose booper when doing this...it self-calibrates on startup.
   // DO THIS BEFORE THE SPLASH SO IT DOESN'T REQUIRE A LENGTHY HOLD.
-  char *filename = (char *)"config.eye";
- 
+  // Check auto-cycle state first (persists across soft resets)
+  extern const char *getCycleConfigPath(void);
+  const char *cycleConfig = getCycleConfigPath();
+  char *filename = (char *)cycleConfig;
+
+  // Button overrides: hold a button at boot to load config1/2/3.eye
   uint32_t buttonState = arcada.readButtons();
   if((buttonState & ARCADA_BUTTONMASK_UP) && arcada.exists("config1.eye")) {
     filename = (char *)"config1.eye";
